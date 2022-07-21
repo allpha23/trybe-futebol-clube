@@ -4,12 +4,14 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
+const message = 'Token must be a valid token';
+
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
   try {
     const token = req.headers.authorization as string;
 
     if (!token) {
-      return res.status(401).json({ message: 'Token not found' });
+      return res.status(401).json({ message });
     }
 
     const secret = process.env.JWT_SECRET as jwt.Secret;
@@ -17,7 +19,7 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
 
     next();
   } catch (error) {
-    return res.status(401).json({ message: 'Expired or invalid token' });
+    return res.status(401).json({ message });
   }
 };
 
