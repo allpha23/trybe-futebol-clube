@@ -36,4 +36,16 @@ describe('Login Route', () => {
     expect(response.status).to.be.equal(200);
     expect(response.body).to.have.property('token');
   });
+
+  it('Sem o campo email', async () => {
+    const response = await chai.request(app).post('/login').send({password: 'secret_admin'});
+    expect(response.status).to.be.equal(400);
+    expect(response.body).to.have.property('message');
+  });
+
+  it('Sem o campo password', async () => {
+    const response = await chai.request(app).post('/login').send({email: 'admin@admin.com'});
+    expect(response.status).to.be.equal(400);
+    expect(response.body).to.have.property('message');
+  });
 });
