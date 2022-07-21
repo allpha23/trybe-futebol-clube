@@ -6,7 +6,7 @@ const message = 'All fields must be filled';
 const validateEmail = (req: Request, res: Response, next: NextFunction) => {
   const { email } = req.body as ILogin;
 
-  if (email === undefined) {
+  if (!email) {
     return res.status(400).json({ message });
   }
 
@@ -16,7 +16,7 @@ const validateEmail = (req: Request, res: Response, next: NextFunction) => {
 const validatePassword = (req: Request, res: Response, next: NextFunction) => {
   const { password } = req.body as ILogin;
 
-  if (password === undefined) {
+  if (!password) {
     return res.status(400).json({ message });
   }
 
