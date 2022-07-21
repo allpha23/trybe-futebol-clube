@@ -1,5 +1,6 @@
 import * as express from 'express';
 import login from './routes/loginRoute';
+import team from './routes/teamRoute';
 
 class App {
   public app: express.Express;
@@ -24,6 +25,7 @@ class App {
     this.app.use(express.json());
     this.app.use(accessControl);
     this.app.use('/login', login);
+    this.app.use('/teams', team);
   }
 
   public start(PORT: string | number):void {
