@@ -1,4 +1,4 @@
-import { IMatche } from '../protocols/LoginProtocol';
+import { IGoals, IMatche } from '../protocols/matcheProtocols';
 import Matches from '../database/models/MatcheModel';
 import Teams from '../database/models/TeamModel';
 
@@ -34,4 +34,13 @@ const finishMatche = async (id: string) => {
   return { message: 'Finished' };
 };
 
-export default { matcheList, createMatche, finishMatche };
+const updateMatche = async (id: string, data: IGoals) => {
+  const { homeTeamGoals, awayTeamGoals } = data;
+  await Matches.update({ homeTeamGoals, awayTeamGoals }, {
+    where: { id },
+  });
+
+  return { message: 'Updated' };
+};
+
+export default { matcheList, createMatche, finishMatche, updateMatche };
