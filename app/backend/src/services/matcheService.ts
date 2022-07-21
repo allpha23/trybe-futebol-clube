@@ -1,3 +1,4 @@
+import { IMatche } from '../protocols/LoginProtocol';
 import Matches from '../database/models/MatcheModel';
 import Teams from '../database/models/TeamModel';
 
@@ -12,4 +13,10 @@ const matcheList = async () => {
   return matches;
 };
 
-export default matcheList;
+const createMatche = async (data: IMatche) => {
+  const create = await Matches.create({ ...data, inProgress: true });
+
+  return create;
+};
+
+export default { matcheList, createMatche };
