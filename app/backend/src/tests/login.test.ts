@@ -21,7 +21,7 @@ const loginMock = {
   password: 'secret_admin',
 }
 
-describe('Login Route', () => {
+describe('/Login', () => {
   before(() => {
     sinon.stub(Users, 'findAll')
       .resolves([userMock[0]] as Users[]);
