@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IMatche } from '../protocols/LoginProtocol';
+import { IGoals, IMatche } from '../protocols/matcheProtocols';
 import matcheService from '../services/matcheService';
 
 const matcheList = async (req: Request, res: Response) => {
@@ -26,4 +26,12 @@ const finishMatche = async (req: Request, res: Response) => {
   return res.status(200).json(update);
 };
 
-export default { matcheList, createMatche, finishMatche };
+const updateMatche = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const data: IGoals = req.body;
+  const update = await matcheService.updateMatche(id, data);
+
+  return res.status(200).json(update);
+};
+
+export default { matcheList, createMatche, finishMatche, updateMatche };
