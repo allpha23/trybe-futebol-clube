@@ -3,7 +3,6 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 import { before } from 'mocha';
 import * as sinon from 'sinon';
-import { IUser } from '../protocols/LoginProtocol';
 
 import { app } from '../app';
 import Users from '../database/models/UserModel';

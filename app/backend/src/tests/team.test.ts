@@ -42,7 +42,7 @@ describe('/Teams', () => {
   it('Listar times', async () => {
     const response = await chai.request(app).get('/teams');
     expect(response.status).to.be.equal(200);
-    expect(response.body).to.have.property('teams');
+    expect(response.body).to.have.eql(teamMock);
   });
 });
 
@@ -59,6 +59,6 @@ describe('/Teams:id', () => {
   it('Pega time por id', async () => {
     const response = await chai.request(app).get('/teams/:id');
     expect(response.status).to.be.equal(200);
-    expect(response.body).to.have.property('team');
+    expect(response.body).to.have.eql({ id: 1, teamName: 'Avaí/Kindermann' });
   });
 });
