@@ -8,10 +8,3 @@ export interface IUser extends ILogin {
   username: string;
   role: string;
 }
-
-export interface IMatche {
-  homeTeam: number;
-  awayTeam: number;
-  homeTeamGoals: number;
-  awayTeamGoals: number;
-}
