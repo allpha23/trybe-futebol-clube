@@ -1,4 +1,4 @@
-import { ILeadebord } from '../protocols/leaderbordProtocol';
+import { ILeadebord, ITeamleaderbord } from '../protocols/leaderbordProtocol';
 
 const teamName = (obj: ILeadebord) => {
   const { name } = obj;
@@ -10,6 +10,7 @@ const total = (obj: ILeadebord, index: number) => {
   obj.matches.forEach((m) => {
     if (m.homeTeam === index + 1 && m.homeTeamGoals > m.awayTeamGoals) totalPoints += 3;
     else if (m.awayTeam === index + 1 && m.awayTeamGoals > m.homeTeamGoals) totalPoints += 3;
+    else if (m.homeTeam === index + 1 && m.homeTeamGoals === m.awayTeamGoals) totalPoints += 1;
     else if (m.awayTeam === index + 1 && m.awayTeamGoals === m.homeTeamGoals) totalPoints += 1;
   });
 
@@ -81,6 +82,15 @@ const rate = (p: number, g: number) => {
   return efficiency.toFixed(2);
 };
 
+const sortByPoints = (leaderboard: ITeamleaderbord[]) => (
+  leaderboard
+    .sort((a, b) => b.goalsOwn - a.goalsOwn)
+    .sort((a, b) => b.goalsFavor - a.goalsFavor)
+    .sort((a, b) => b.goalsBalance - a.goalsBalance)
+    .sort((a, b) => b.totalVictories - a.totalVictories)
+    .sort((a, b) => b.totalPoints - a.totalPoints)
+);
+
 const create = (teamMatcher: ILeadebord[]) => {
   const leaderboard = teamMatcher.map((obj, index) => {
     const name = teamName(obj);
@@ -100,7 +110,7 @@ const create = (teamMatcher: ILeadebord[]) => {
     return { name, ...totalIndex, ...goalsIndex, efficiency };
   });
 
-  return leaderboard;
+  return sortByPoints(leaderboard);
 };
 
 export default create;
