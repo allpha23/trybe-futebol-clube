@@ -17,4 +17,17 @@ const createLeaderboard = async () => {
   return leaderboard;
 };
 
-export default createLeaderboard;
+const filterLeaderboardHome = async () => {
+  const teams = await Teams.findAll();
+  const teamMatcher = await Promise.all(teams.map(async (team) => {
+    const matches = await Matches.findAll({ where: {
+      [Op.and]: [{ inProgress: false }, { homeTeam: team.id }] } });
+    return { name: team.teamName, matches };
+  }));
+
+  const leaderboardHome = create(teamMatcher);
+
+  return leaderboardHome;
+};
+
+export default { createLeaderboard, filterLeaderboardHome };
