@@ -3,6 +3,6 @@ import leaderboardController from '../controllers/leaderbordController';
 
 const router = Router();
 
-router.get('/home', leaderboardController);
+router.get('/', leaderboardController);
 
 export default router;
