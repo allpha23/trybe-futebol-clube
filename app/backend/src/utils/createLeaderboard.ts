@@ -30,6 +30,7 @@ const victories = (obj: ILeadebord, index: number) => {
 const draw = (obj: ILeadebord, index: number) => {
   let totalDraws = 0;
   obj.matches.forEach((m) => {
+    if (m.homeTeam === index + 1 && m.homeTeamGoals === m.awayTeamGoals) totalDraws += 1;
     if (m.awayTeam === index + 1 && m.awayTeamGoals === m.homeTeamGoals) totalDraws += 1;
   });
 
