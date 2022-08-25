@@ -39,5 +39,9 @@ cd trybe-futebol-clube
 npm run compose:up
 
 # executar o projeto
-projeto estará execução em localhost:3000
+projeto estará em execução no endereço localhost:3000
+
+# você deve usar o seguinte e-mail e senha para logar
+email: admin@admin.com
+password: secret_admin
 ```
