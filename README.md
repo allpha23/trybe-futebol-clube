@@ -25,6 +25,7 @@ Também é possível criar, atualizar ou excluir (__CRUD__) uma partida, mas ape
 - ExpressJS
 - Mocha
 - Chai
+- Docker
 
 
 # Como executar o projeto
