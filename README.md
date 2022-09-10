@@ -12,6 +12,10 @@ Também é possível criar, atualizar ou excluir (__CRUD__) uma partida, mas ape
 
 ## Layout web
 
+![Web 1](https://github.com/allpha23/assets/raw/main/TFC/login.png)
+![Web 2](https://github.com/allpha23/assets/raw/main/TFC/classificação.png)
+![Web 1](https://github.com/allpha23/assets/raw/main/TFC/partidas.png)
+
 
 # Tecnologias utilizadas:
 
@@ -22,25 +26,30 @@ Também é possível criar, atualizar ou excluir (__CRUD__) uma partida, mas ape
 - Mocha
 - Chai
 
-## Implantação em produção
 
 # Como executar o projeto
 
 Pré-requisitos: 
+- Sistema Operacional Distribuição Unix
 - npm / yarn
 - Docker-compose
+- Node >= 16
+- Docker
+- Docker-compose versão >=1.29.2
 
 ```bash
-# clonar repositório
+# Clonar repositório
 git clone git@github.com:allpha23/trybe-futebol-clube.git
 
-# entrar na pasta do projeto
+# Entrar na pasta do projeto
 cd trybe-futebol-clube
+
+# Instalar dependências
+npm install
 
 # Compile o projeto
 npm run compose:up
 
-# executar o projeto
 projeto estará em execução no endereço localhost:3000
 
 # você deve usar o seguinte e-mail e senha para logar
